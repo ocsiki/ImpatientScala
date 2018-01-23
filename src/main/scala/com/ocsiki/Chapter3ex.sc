@@ -129,20 +129,20 @@ print(removeAllButFirstNegative(ArrayBuffer(1,2,3,-1,5,6,7,-3,-4)).mkString(" ")
 //9. Improve the solution of the preceding exercise by collecting the positions that should be
 // moved and their target positions. Make those moves and truncate the buffer.
 // Don’t copy any elements before the first unwanted element.
-def improvedRemoveAllButFirstNegative(a: ArrayBuffer[Int]) = {
+def improvedRemoveAllButFirstNegative(a: ArrayBuffer[Int]): Unit = {
   val allNegativeIndices = new ArrayBuffer[Int]
   for (i <- a.indices; if a(i) < 0) allNegativeIndices += i
 }
 
 //10. Make a collection of all time zones returned by java.util.TimeZone.getAvailableIDs that are in America.
 // Strip off the "America/" prefix and sort the result.
-def getAmericanTimezones(): Array[String] = {
+def getAmericanTimezones: Array[String] = {
   val ds:Array[String] = java.util.TimeZone.getAvailableIDs
   val prefixes = for (elem <- ds; if elem.startsWith("America/")) yield elem.replace("America/", "")
   prefixes.sorted
 }
 
-print(getAmericanTimezones().mkString(" "))
+print(getAmericanTimezones.mkString(" "))
 
 
 //11. Import java.awt.datatransfer._ and make an object of type SystemFlavorMap with the call
@@ -151,10 +151,9 @@ print(getAmericanTimezones().mkString(" "))
 // and get the return value as a Scala buffer.
 // (Why this obscure class? It’s hard to find uses of java.util.List in the standard Java library.)
 def dataTransfer(): mutable.Buffer[String] = {
-  val flavors: SystemFlavorMap = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]
+  val flavors: SystemFlavorMap = SystemFlavorMap.getDefaultFlavorMap.asInstanceOf[SystemFlavorMap]
   val natives: mutable.Buffer[String] = flavors.getNativesForFlavor(DataFlavor.imageFlavor).asScala
   natives
 }
 
 print(dataTransfer().mkString(" "))
-
