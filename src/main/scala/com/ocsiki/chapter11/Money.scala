@@ -11,12 +11,12 @@ class Money(d: Int, c: Int) {
 
   override def toString: String = s"\$$d.$c"
 
-  override def equals(obj: scala.Any): Boolean = {
-    if (obj.isInstanceOf[Money]) {
-      val other = obj.asInstanceOf[Money]
-      if (d == other.d && c == other.c) true
-      else false
-    } else false
-  }
+//  override def equals(obj: scala.Any): Boolean = {
+//    if (obj.isInstanceOf[Money]) {
+//      val other: Money = obj.asInstanceOf[Money]
+//      if (d == other.d && c == other.c) true
+//      else false
+//    } else false
+//  }
 
 }
